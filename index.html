@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./styles.css">
+	<script src="https://kit.fontawesome.com/e61c439e70.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<h1 class="main-title">Mashipa Egresados</h1>
+	<div class="columns">
+		<div class="column-item">
+			<h2 class="column-title"> Formulario de creación </h2>
+			<form id="school-form"></form>
+			<form id="item-form"></form>
+			<div class="school-form">
+				<label for="date">Fecha</label>
+				<input type="date" name="date" id="" form="school-form">
+				<label for="school">Colegio</label>
+				<input type="text" name="school" id="" form="school-form">
+				<label for="students">Cantidad de alumnos</label>
+				<input type="number" name="students" id="" form="school-form">
+				<label for="contactName">Nombre del delegado</label>
+				<input type="text" name="contactName" id="" form="school-form">
+				<label for="contactEmail">Email delegado</label>
+				<input type="email" name="contactEmail" id="" form="school-form">
+				<div>
+					<ol id="items" type="I">
+					</ol>
+					<button id="add-item" class="action-buttons">Agregar prenda</button>
+				</div>
+				<button type="reset" form="school-form" id="reset-form" class="action-buttons">Borrar Todo</button>
+				<button type="submit" form="school-form" id="preview-form" class="action-buttons">Crear vista previa</button>
+			</div>
+		</div>
+		<div class="column-item">
+			<h2 class="column-title"> Vista Previa </h2>
+			<div>
+				<p>Datos del Colegio</p>
+				<ul id="school-data">
+				</ul>
+				<hr>
+				<p>Datos del pedido</p>
+				<hr>
+				<p>Precio</p>
+				<p id="final-price"></p>
+				<hr>
+
+			</div>
+			<button id="save-budget">Guardar presupuesto</button>
+			<button id="download-budget">Descargar presupuesto</button>
+		</div>
+
+	</div>
+
+	<script src="./index.js"></script>
+</body>
+</html>

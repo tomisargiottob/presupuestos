@@ -1,0 +1,166 @@
+body{
+	/* background-color: bisque; */
+	font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+	/* background-color: white; */
+}
+.school-form{
+	width: 100%;
+}
+
+.school-form input {
+	display: block;
+	margin: 5px;
+	width: 100%;
+}
+
+.school-form label {
+	display: block;
+}
+.main-title{
+	text-align: center;
+}
+.columns{
+	display: flex;
+	width: 100%;
+}
+.column-item{
+	width: 40%;
+	margin: 0px 5%;
+}
+.column-title{
+	text-align: center;
+}
+.titles{
+	display: flex;
+}
+.items-title{
+	margin-left: 20px;
+	text-align: center;
+}
+.title0{
+	width: 230px;
+}
+.title1{
+	width: 90px;
+}
+.title2{
+	width: 70px;
+}
+.title3{
+	margin-left: 30px;
+}
+
+#items{
+	margin-left: 0px;
+	margin-block-start: 0px;
+	padding-inline-start: 0px;
+}
+.listItem{
+	display: flex;
+	margin-bottom: 15px;
+}
+.listItem select{
+	margin-right: 10px;
+	width: 215px;
+}
+.listItem input{
+	width: 70px;
+	margin:0px 5px 0px 15px;
+}
+.listItem span{
+	margin-left: 45px;
+}
+.delete-icon{
+	padding: 4px 0px 0px;
+	cursor: pointer;
+}
+.show-additionals{
+	cursor: pointer;
+	padding: 4px 4px 0px;
+	margin-left: 10px;
+	border-radius: 5px;
+	border: 0.1px solid #409eff;
+	background-color: #409eff;
+}
+.remove-item{
+	margin-right: 10px;
+	background-color: #f56c6c;
+	border-radius: 5px;
+	border: 0.1px solid #f56c6c;
+}
+.action-buttons {
+	cursor: pointer;
+	border: 0.1px solid gray;
+	border-radius: 5px;
+	padding: 10px;
+}
+#add-item{
+	margin: 5px;
+	background-color: #67c23a;
+	border-color: #67c23a;
+}
+#reset-form{
+	margin-top: 20px;
+	margin-right: 20px;
+	background-color: #f56c6c;
+	border-color: #f56c6c;
+}
+#preview-form{
+	background-color: #409eff;
+	border-color: #409eff;
+}
+.additionals-list{
+	display: block;
+	width: 100%;
+}
+.additionals-list ol{
+	padding-inline-start: 25px;
+}
+.additionals-list ol li{
+	margin-bottom: 10px;
+	display: flex;
+}
+.additionals-list ol li select{
+	width: 190px;
+	margin-right: 10px;
+	height: 23px;
+}
+.additionals-list ol li input{
+	width: 70px;
+	margin:0px 5px 0px 15px;
+}
+.add-additionals {
+	position: relative;
+	left: 40%;
+	margin-bottom: 10px;
+	cursor: pointer;
+	padding: 4px 4px 4px;
+	border-radius: 5px;
+	background-color: #67c23a;
+	border: 0.1px solid #67c23a;
+}
+.hidden{
+	display: none;
+}
+
+@media screen and (max-width: 980px)  {  
+	.columns{
+		display: block;
+	}
+	.column-item{
+		width: 90%;
+		margin: 0px 5%;
+	}
+} 
+
+@media screen and (max-width: 600px)  {  
+	.columns{
+		display: block;
+	}
+	.column-item{
+		width: 90%;
+		margin: 0px 5%;
+	}
+} 
