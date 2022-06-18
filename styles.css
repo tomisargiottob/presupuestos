@@ -40,13 +40,13 @@ h1{
 	text-align: center;
 }
 .title0{
-	width: 230px;
+	min-width: 230px;
 }
 .title1{
-	width: 90px;
+	min-width: 90px;
 }
 .title2{
-	width: 70px;
+	min-width: 70px;
 }
 .title3{
 	margin-left: 30px;
@@ -63,11 +63,14 @@ h1{
 }
 .listItem select{
 	margin-right: 10px;
-	width: 215px;
+	width: 220px;
+	min-width: 220px;
+	max-width: 220px;
 }
 .listItem input{
 	width: 70px;
-	margin:0px 5px 0px 15px;
+	margin:0px 12px 0px 12px;
+	text-align: center;
 }
 .listItem span{
 	margin-left: 45px;
@@ -95,6 +98,8 @@ h1{
 	border: 0.1px solid gray;
 	border-radius: 5px;
 	padding: 10px;
+	font-weight: 700;
+	color: white;
 }
 #add-item{
 	margin: 5px;
@@ -107,9 +112,10 @@ h1{
 	background-color: #f56c6c;
 	border-color: #f56c6c;
 }
-#preview-form{
+.confirm-button{
 	background-color: #409eff;
 	border-color: #409eff;
+
 }
 .additionals-list{
 	display: block;
@@ -118,18 +124,19 @@ h1{
 .additionals-list ol{
 	padding-inline-start: 25px;
 }
-.additionals-list ol li{
+.additional-form{
 	margin-bottom: 10px;
 	display: flex;
 }
-.additionals-list ol li select{
-	width: 190px;
+.additional-form select{
+	width: 195px;
 	margin-right: 10px;
 	height: 23px;
 }
-.additionals-list ol li input{
+.additional-form input{
 	width: 70px;
-	margin:0px 5px 0px 15px;
+	margin:0px 12px 0px 12px;
+	text-align: center;
 }
 .add-additionals {
 	position: relative;
@@ -145,6 +152,71 @@ h1{
 	display: none;
 }
 
+#school-data{
+	list-style: square inside;
+}
+#school-data li{
+	margin-bottom: 5px;
+}
+#budget-table{
+	width: 100%;
+	margin: 0px;
+}
+table, th, td{
+	border: 1px solid black;
+  	border-collapse: collapse;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+table{
+	margin-bottom: 25px;
+}
+.item-number{
+	min-width: 40px;
+	width: 15%;
+	padding-right: 10px;
+	text-align: right;
+}
+.item-name{
+	min-width: 150px;
+	text-align: left;
+	padding-left: 10px;
+	width: 40%;
+	padding-right: 10px;
+}
+.item-amount{
+	min-width: 40px;
+	width: 17%;
+	padding-right: 10px;
+	text-align: center;
+}
+.item-price{
+	min-width: 40px;
+	width: 13%;
+	padding-right: 10px;
+	text-align: center;
+}
+.item-total{
+	width: 15%;
+	min-width: 50px;
+	text-align: center;
+}
+#summary{
+	text-align: right;
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+
+@media screen and (max-width: 1200px)  {  
+	.columns{
+		display: block;
+	}
+	.column-item{
+		width: 90%;
+		margin: 0px 5%;
+	}
+} 
+
 @media screen and (max-width: 980px)  {  
 	.columns{
 		display: block;
@@ -155,7 +227,7 @@ h1{
 	}
 } 
 
-@media screen and (max-width: 600px)  {  
+/* @media screen and (max-width: 600px)  {  
 	.columns{
 		display: block;
 	}
@@ -163,4 +235,4 @@ h1{
 		width: 90%;
 		margin: 0px 5%;
 	}
-} 
+}  */
