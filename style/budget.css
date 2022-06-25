@@ -1,14 +1,6 @@
-body{
-	/* background-color: bisque; */
-	font-family: Arial, Helvetica, sans-serif;
-}
-h1{
-	/* background-color: white; */
-}
 .school-form{
 	width: 100%;
 }
-
 .school-form input {
 	display: block;
 	margin: 5px;
@@ -18,9 +10,7 @@ h1{
 .school-form label {
 	display: block;
 }
-.main-title{
-	text-align: center;
-}
+
 .columns{
 	display: flex;
 	width: 100%;
@@ -31,6 +21,12 @@ h1{
 }
 .column-title{
 	text-align: center;
+}
+.section-name{
+	text-decoration: underline;
+	text-underline-offset: 6px;
+	font-weight: 600;
+	font-size: 16px;
 }
 .titles{
 	display: flex;
@@ -87,24 +83,11 @@ h1{
 	border: 0.1px solid #409eff;
 	background-color: #409eff;
 }
-.remove-item{
-	margin-right: 10px;
-	background-color: #f56c6c;
-	border-radius: 5px;
-	border: 0.1px solid #f56c6c;
-}
-.action-buttons {
-	cursor: pointer;
-	border: 0.1px solid gray;
-	border-radius: 5px;
-	padding: 10px;
-	font-weight: 700;
-	color: white;
-}
+
 #add-item{
 	margin: 5px;
-	background-color: #67c23a;
-	border-color: #67c23a;
+	background-color: #409eff;
+	border-color: #409eff;
 }
 #reset-form{
 	margin-top: 20px;
@@ -113,9 +96,8 @@ h1{
 	border-color: #f56c6c;
 }
 .confirm-button{
-	background-color: #409eff;
-	border-color: #409eff;
-
+	background-color: #67c23a;
+	border-color: #67c23a;
 }
 .additionals-list{
 	display: block;
@@ -148,13 +130,7 @@ h1{
 	background-color: #67c23a;
 	border: 0.1px solid #67c23a;
 }
-.hidden{
-	display: none;
-}
 
-#school-data{
-	list-style: square inside;
-}
 #school-data li{
 	margin-bottom: 5px;
 }
@@ -167,39 +143,6 @@ table, th, td{
   	border-collapse: collapse;
 	padding-right: 10px;
 	padding-left: 10px;
-}
-table{
-	margin-bottom: 25px;
-}
-.item-number{
-	min-width: 40px;
-	width: 15%;
-	padding-right: 10px;
-	text-align: right;
-}
-.item-name{
-	min-width: 150px;
-	text-align: left;
-	padding-left: 10px;
-	width: 40%;
-	padding-right: 10px;
-}
-.item-amount{
-	min-width: 40px;
-	width: 17%;
-	padding-right: 10px;
-	text-align: center;
-}
-.item-price{
-	min-width: 40px;
-	width: 13%;
-	padding-right: 10px;
-	text-align: center;
-}
-.item-total{
-	width: 15%;
-	min-width: 50px;
-	text-align: center;
 }
 #summary{
 	text-align: right;

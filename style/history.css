@@ -1,0 +1,29 @@
+.add-icon{
+	cursor: pointer;
+	padding: 4px 4px 0px;
+	margin-left: 10px;
+	border-radius: 5px;
+	border: 0.1px solid #409eff;
+	background-color: #409eff;
+}
+
+.budgets-list{
+	width: 40%;
+	margin: 0 auto;
+}
+
+.budget-date{
+	min-width: 80px;
+}
+.budget-school{
+	min-width: 80px;
+}
+.budget-amount{
+	min-width: 80px;
+}
+.budget-total{
+	min-width: 80px;
+}
+.budget-actions{
+	min-width: 80px;
+}

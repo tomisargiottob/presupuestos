@@ -1,0 +1,35 @@
+.body-tables{
+	width: 45%;
+	margin: 0 auto;
+}
+h2{
+	text-decoration: underline;
+}
+.remove-item{
+	height: 25px;
+}
+.edit-item{
+	margin-right: 10px;
+	height: 25px;
+	background-color: #67c23a;
+	border-radius: 5px;
+	border: 0.1px solid #67c23a;
+	cursor: pointer;
+}
+.create-item{
+	text-align: right;
+}
+.create-button{
+	cursor: pointer;
+	background-color: #409eff;
+	border-color: #409eff;
+	margin-bottom: 15px;
+}
+#aditional-creation input{
+	display: block;
+	margin: 10px 0px;
+}
+#item-creation input{
+	display: block;
+	margin: 10px 0px;
+}

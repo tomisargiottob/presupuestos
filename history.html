@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Presupuestos Mashipa</title>
+	<link rel="icon" type="image/x-icon" href="/assets/logoMashipa2.png">
+	<link rel="stylesheet" href="./style/general.css">
+	<link rel="stylesheet" href="./style/history.css">
+	<script src="https://kit.fontawesome.com/e61c439e70.js" crossorigin="anonymous"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+	<script type="text/javascript" src="./utils/purify.min.js"></script>
+	<script type="text/javascript" src="./utils/html2canvas.min.js"></script>
+	<script type="text/javascript" src="./js/database.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+	<div class="top-bar">
+		<div class="logo">
+			<img src="./assets/logoMashipa.png" alt="Logo">
+		</div>
+		<div class="links">
+			<a href="./index.html"> Presupuestos </a>
+			<a href="./variables.html"> Variables </a>
+			<a href="#"> Historial </a>
+		</div>
+	</div>
+	<h1 class="main-title">Historial de presupuestos</h1>
+	<div class="budgets-list">
+		<table id="budget-table">
+			<thead>
+				<th class="budget-date">Fecha</th>
+				<th class="budget-school">Colegio</th>
+				<th class="budget-items">Cantidad</th>
+				<th class="budget-total">Total</th>
+				<th class="budget-actions">Acciones</th>
+			</thead>
+			<tbody id="budget-details">
+	
+			</tbody>
+		</table>
+	</div>
+	<div id="budget-section" class="hidden">
+		<p class="section-name">Datos de la Promoción:</p>
+		<ul id="school-data">
+		</ul>
+		<hr>
+		<p class="section-name">Detalles del pedido:</p>
+		<table id="budget-table">
+			<thead>
+				<th class="item-number">Numero</th>
+				<th class="item-name">Item</th>
+				<th class="item-amount">Cantidad</th>
+				<th class="item-price">Precio</th>
+				<th class="item-total">Total</th>
+			</thead>
+			<tbody id="budget-details">
+
+			</tbody>
+		</table>
+		<hr>
+		<p class="section-name">Precio:</p>
+		<p id="discount-percentage" class="summary"></p>
+		<p id="discount-amount" class="summary"></p>
+		<p id="final-price" class="summary"></p>
+		<hr>
+	</div>
+	<script src="./js/history.js"></script>
+</body>
+</html>

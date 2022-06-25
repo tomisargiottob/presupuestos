@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mashipa presupuestos</title>
+	<link rel="icon" type="image/x-icon" href="/assets/logoMashipa2.png">
+	<link rel="stylesheet" href="./style/general.css">
+	<link rel="stylesheet" href="./style/variables.css">
+	<script src="https://kit.fontawesome.com/e61c439e70.js" crossorigin="anonymous"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+	<script type="text/javascript" src="./js/alerts.js"></script>
+	<script type="text/javascript" src="./js/database.js"></script>
+</head>
+<body>
+	<div class="top-bar">
+		<div class="logo">
+			<img src="./assets/logoMashipa.png" alt="Logo">
+		</div>
+		<div class="links">
+			<a href="./index.html"> Presupuestos </a>
+			<a href="#"> Variables </a>
+			<a href="./history.html"> Historial </a>
+		</div>
+	</div>
+	<h1 class="main-title">Variables</h1>
+	<div class="body-tables">
+		<h2>Prendas:</h2>
+		<div class="create-item">
+			<button class="action-buttons create-button" id="create-item">Crear prenda</button>
+		</div>
+		<div class="add-item">
+			<form class="hidden" id="item-creation">
+				<label for="name">Nombre:</label>
+				<input type="text" name="name" id="">
+				<label for="name">Precio:</label>
+				<input type="text" name="price" id="">
+				<button type="submit" class="edit-item">Crear</button>
+				<button id="cancel-create-item" class="remove-item">Cancelar</button>
+			</form>
+		</div>
+		<div>
+			<table>
+				<thead>
+					<th style="width:300px">
+						Nombre
+					</th>
+					<th style="width:100px">
+						Precio
+					</th>
+					<th style="width:100px"> 
+						Eliminar
+					</th>
+				</thead>
+				<tbody id="clothing-items">
+				</tbody>
+			</table>
+		</div>
+		<h2>Adicionales:</h2>
+		<div class="create-item">
+			<button class="action-buttons create-button" id="create-aditional">Crear adicional</button>
+		</div>
+		<div class="add-item">
+			<form class="hidden" id="aditional-creation">
+				<label for="name">Nombre:</label>
+				<input type="text" name="name" id="">
+				<label for="name">Precio:</label>
+				<input type="text" name="price" id="">
+				<button type="submit" class="edit-item">Crear</button>
+				<button id="cancel-create-aditional" class="remove-item">Cancelar</button>
+			</form>
+		</div>
+		<div>
+			<table>
+				<thead>
+					<th style="width:300px">
+						Nombre
+					</th>
+					<th style="width:100px">
+						Precio
+					</th>
+					<th style="width:100px"> 
+						Eliminar
+					</th>
+				</thead>
+				<tbody id="aditional-items">		
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript" src="./js/variables.js"></script>
+</body>
+</html>

@@ -4,17 +4,31 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" href="./styles.css">
+	<title>Mashipa presupuestos</title>
+	<link rel="icon" type="image/x-icon" href="/assets/logoMashipa2.png">
+	<link rel="stylesheet" href="./style/budget.css">
+	<link rel="stylesheet" href="./style/general.css">
 	<script src="https://kit.fontawesome.com/e61c439e70.js" crossorigin="anonymous"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+	<script type="text/javascript" src="./js/alerts.js"></script>
 	<script type="text/javascript" src="./utils/purify.min.js"></script>
 	<script type="text/javascript" src="./utils/html2canvas.min.js"></script>
+	<script type="text/javascript" src="./js/database.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-	<h1 class="main-title">Mashipa Egresados</h1>
+	<div class="top-bar">
+		<div class="logo">
+			<img src="./assets/logoMashipa.png" alt="Logo">
+		</div>
+		<div class="links">
+			<a href="#"> Presupuestos </a>
+			<a href="./variables.html"> Variables </a>
+			<a href="./history.html"> Historial </a>
+		</div>
+	</div>
+	<h1 class="main-title">Presupuestos</h1>
 	<div class="columns">
 		<div class="column-item">
 			<h2 class="column-title"> Formulario de creación </h2>
@@ -42,11 +56,11 @@
 		<div class="column-item">
 			<h2 class="column-title"> Vista Previa </h2>
 			<div id="budget-section">
-				<p>Datos de la Promoción:</p>
+				<p class="section-name">Datos de la Promoción:</p>
 				<ul id="school-data">
 				</ul>
 				<hr>
-				<p>Detalles del pedido:</p>
+				<p class="section-name">Detalles del pedido:</p>
 				<table id="budget-table" class="hidden">
 					<thead>
 						<th class="item-number">Numero</th>
@@ -60,7 +74,7 @@
 					</tbody>
 				</table>
 				<hr>
-				<p>Precio:</p>
+				<p class="section-name">Precio:</p>
 				<p id="discount-percentage" class="summary"></p>
 				<p id="discount-amount" class="summary"></p>
 				<p id="final-price" class="summary"></p>
@@ -73,6 +87,6 @@
 
 	</div>
 
-	<script src="./index.js" type="module"></script>
+	<script src="./js/index.js" type="module"></script>
 </body>
 </html>

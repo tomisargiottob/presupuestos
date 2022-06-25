@@ -1,39 +1,6 @@
 window.jsPDF = window.jspdf.jsPDF;
 window.html2canvas = html2canvas;
 
-
-// para hacer la consulta a base de datos
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
-
-// const firebaseConfig = {
-// };
-
-// // Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-// const db = firebase.firestore();
-// let clothing = [{ name: 'Seleccionar', price: 0 }];
-// let variables = [{ name: 'Seleccionar', price: 0 }];
-
-// db.collection("clothing").get().then((querySnapshot) => {
-// 	querySnapshot.forEach((doc) => {
-// 		clothing.push(doc.data());
-// 	});
-// 	console.log(clothing);
-// });
-
-// db.collection("variables").get().then((querySnapshot) => {
-// 	querySnapshot.forEach((doc) => {
-// 		variables.push(doc.data());
-// 	});
-// });
-
-
-//funciona de manera local
-const clothing = [{ name: 'Seleccionar', price: 0 },{ name: 'campera', price: 100 },{ name: 'buzo', price: 200 },{ name: 'remera', price: 300 },{ name: 'chomba', price: 400 },{ name: 'babucha', price: 500 },{ name: '2do buzo', price: 600 },{ name: '2da remera', price: 700 },{ name: '2da chomba', price: 800 },{ name: '2da babucha', price: 900 }];
-
-const variables =[{'name':'Seleccionar','price':0},{'name':'CANTIDAD DE CORTES','price':0},{'name':'CANTIDAD DE VIVOS','price':100},{'name':'CORDERO EN CAPUCHA','price':200},{'name':'SUBLIMADO COMPLETO','price':300},{'name':'SUBLIMADO PARCIAL','price':400},{'name':'SUBLIMADO CAPUCHA/APLIQUE','price':500},{'name':'BORDADO APLIQUE XL','price':600},{'name':'BORDADO APLIQUE GRANDE','price':700},{'name':'BORDADO APLIQUE MEDIANO','price':800},{'name':'BORDADO HILO XL','price':900},{'name':'BORDADO HILO GRANDE','price':1000},{'name':'BORDADO HILO MEDIANO','price':1100},{'name':'BORDADO HILO CHICO','price':1200},{'name':'ESTAMPADO XXL','price':1300},{'name':'ESTAMPADO GRANDE','price':1400},{'name':'ESTAMPADO MEDIANO','price':1500}];
-
-
 const itemsTitles = ['Prenda', 'Cantidad', 'Precio', 'Adicionales'];
 
 const translation = {
@@ -43,6 +10,8 @@ const translation = {
 	students: 'Numero de alumnos',
 	contactEmail: 'Email del delegado',
 }
+
+let budgetGenerated = {};
 
 // transformo las opciones en HTML
 function createOptions(options) {
@@ -206,11 +175,13 @@ function createPreview(event) {
 	const budgetDetails = document.getElementById('budget-details');
 	budgetDetails.innerHTML='';
 	schoolData.innerHTML=''; //elimino lo anterior si se vuelve a crear
+	budgetGenerated = {items: []};
 	
 	for (var pair of formData.entries()) {
 		if (pair[1]){
 			const budgetData = document.createElement('li');
 			budgetData.innerText = `${translation[pair[0]]} : ${pair[1]}`;
+			budgetGenerated[pair[0]] = pair[1];
 			schoolData.append(budgetData);
 		}
 	}
@@ -225,6 +196,7 @@ function createPreview(event) {
 			let itemTotal = 0;
 	
 			const [tableData, price] = addTableData(i, itemData.item, itemData.amount, itemData.price);
+			budgetGenerated.items.push({ name: itemData.item, amount: itemData.amount, price: itemData.price, additionals: [] })
 			itemTotal += price;
 	
 			const itemAdditionals = document.getElementById(`item${i}Additionals`);
@@ -234,6 +206,7 @@ function createPreview(event) {
 				const additionalFormData = new FormData(document.getElementById(`item${i}additional${j}`));
 				const additionalData = Object.fromEntries(additionalFormData);
 				if(additionalData.name !== 'seleccionar') {
+					budgetGenerated.items[i-1].additionals.push({ name: additionalData.name, amount: additionalData.amount, price: additionalData.price });
 					const [tableData, price] = addTableData(`${i}.${j+1}`, additionalData.name, additionalData.amount, additionalData.price);
 					budgetDetails.append(tableData);
 					itemTotal += price;
@@ -244,6 +217,7 @@ function createPreview(event) {
 			total += itemTotal;
 		}
 	}
+	budgetGenerated.total = total;
 	const finalPrice = document.getElementById('final-price');
 	finalPrice.innerHTML= `<strong>Total: ${total}$</strong>`;
 }
@@ -280,45 +254,60 @@ function addTableData(number, name, amount, price, total) {
 // Descargar presupuesto como PDF
 function downloadBudget (event) {
 	event.preventDefault();
-	console.log('descargando presupuesto');
 
 	const doc = new jsPDF('p', 'pt', 'a4');
 	const section = document.getElementById('budget-section');
-	var getContent = "<div style='font-size:11px; padding: 05px 25px; width:540px;'>"+section.innerHTML+"</div>";
+	var getContent = "<div style='font-size:11px; padding: 05px 25px; width:540px;'><div style=' padding: 05px 25px; width:300px; margin= 0 auto;'><img style='width:100%;' src='./assets/logoMashipa.png' alt='Logo'></div>"+section.innerHTML+"</div>";
 
 	doc.setFont("helvetica");
-	doc.setFontSize(2);
+	doc.setFontSize(1);
 	doc.html(getContent,{
 		callback: function(doc) {
-			doc.save("output.pdf");
+			doc.save("presupuestoMashipa.pdf");
 		},
 	});
 }
 
-// El formulario puede borrarse todo y si se confirma tambien se eliminan los items
-const resetForm = document.getElementById('reset-form');
-resetForm.addEventListener('click', () => {
-	const deleteAll = confirm('¿Desea eliminar todas las prendas agregadas?');
-	if (deleteAll) {
-		const itemList = document.getElementById('items');
-		itemList.innerHTML = '';
-	}
-});
+async function startBudgetCreation() {
+	const database = new Database();
+	await database.connect();
+	await database.loadElements()
 
-const previewButton = document.getElementById('school-form');
-previewButton.addEventListener('submit', createPreview);
-previewButton.addEventListener('keypress', (event) => {
-	if (event.key==='Enter') {
-		createPreview(event);
-	}
-});
+	// El formulario puede borrarse todo y si se confirma tambien se eliminan los items
+	const resetForm = document.getElementById('reset-form');
+	resetForm.addEventListener('click', () => {
+		const deleteAll = confirm('¿Desea eliminar todas las prendas agregadas?');
+		if (deleteAll) {
+			const itemList = document.getElementById('items');
+			itemList.innerHTML = '';
+		}
+	});
+	
+	const previewButton = document.getElementById('school-form');
+	previewButton.addEventListener('submit', createPreview);
+	previewButton.addEventListener('keypress', (event) => {
+		if (event.key==='Enter') {
+			createPreview(event);
+		}
+	});
+	
+	const addItemButton = document.getElementById('add-item');
+	addItemButton.addEventListener('click', addItem);
+	addItemButton.addEventListener('keypress', (event) => {
+		if (event.key==='+') {
+			addItem(event);
+		}
+	});
+	
+	const downloadFile = document.getElementById('download-budget');
+	downloadFile.addEventListener('click', downloadBudget);
+	
+	const saveBudgetButton = document.getElementById('save-budget');
+	saveBudgetButton.addEventListener('click', (event) => { 
+		event.preventDefault();
+		database.saveBudget(budgetGenerated);
+	});
+}
 
-const addItemButton = document.getElementById('add-item');
-addItemButton.addEventListener('click', addItem);
-addItemButton.addEventListener('keypress', (event) => {
-	if (event.key==='+') {
-		addItem(event);
-	}
-});
-const downloadFile = document.getElementById('download-budget');
-downloadFile.addEventListener('click', downloadBudget);
+startBudgetCreation();
+
