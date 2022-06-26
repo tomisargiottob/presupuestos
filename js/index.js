@@ -3,14 +3,6 @@ window.html2canvas = html2canvas;
 
 const itemsTitles = ['Prenda', 'Cantidad', 'Precio', 'Adicionales'];
 
-const translation = {
-	date: 'Fecha:',
-	school: 'Colegio',
-	contactName: 'Delegado',
-	students: 'Numero de alumnos',
-	contactEmail: 'Email del delegado',
-}
-
 let budgetGenerated = {};
 
 // transformo las opciones en HTML
@@ -90,7 +82,6 @@ function addItem (event){
 	counter.textContent=0;
 	// cada prenda es personalizable, cada prenda tiene sus adicionales
 	const additionals = document.createElement('div');
-	// additionals.setAttribute('id',`item${itemNumber}Additionals`)
 	additionals.className='additionals-list hidden';
 
 	const addAditional = document.createElement('button');
@@ -103,27 +94,7 @@ function addItem (event){
 	additionals.append(additionalsList, addAditional);
 
 	// boton de mostrar y ocultar adicionales para que a medida que se van creando prendas se puedan personalizar
-	const showAdditionals = document.createElement('button');
-	showAdditionals.innerHTML= "<div class='add-icon'><i class='fa-solid fa-eye'></i></div>";
-	showAdditionals.className='show-additionals';
-	
-	const hideAdditionals = document.createElement('button');
-	hideAdditionals.className='show-additionals';
-	hideAdditionals.classList.add('hidden');
-	hideAdditionals.innerHTML= "<div class='add-icon'><i class='fa-solid fa-eye-slash'></i></div>";
-
-	showAdditionals.addEventListener('click', (event) => {
-		event.preventDefault();
-		additionals.classList.remove('hidden');
-		hideAdditionals.classList.remove('hidden');
-		showAdditionals.classList.add('hidden');
-	})
-	hideAdditionals.addEventListener('click', (event) => {
-		event.preventDefault();
-		hideAdditionals.classList.add('hidden');
-		showAdditionals.classList.remove('hidden');
-		additionals.classList.add('hidden');
-	})
+	const [showAdditionals, hideAdditionals] = createShowHideButtons(additionals);
 
 	// agregamos todos los elementos al item y el item al listado de items
 	item.append(removeItemButton, selectClothing, amount, price, counter, showAdditionals, hideAdditionals);
@@ -222,34 +193,6 @@ function createPreview(event) {
 	finalPrice.innerHTML= `<strong>Total: ${total}$</strong>`;
 }
 
-// Añadir a la tabla un elemento mas
-function addTableData(number, name, amount, price, total) {
-	const itemDetails = document.createElement('tr');
-	const itemNumber = document.createElement('td');
-	itemNumber.textContent = number;
-	itemNumber.classList.add('item-number');
-
-	const itemName = document.createElement('td');
-	itemName.textContent = name;
-	itemName.classList.add('item-name');
-
-	const itemAmount = document.createElement('td');
-	itemAmount.textContent = amount;
-	itemAmount.classList.add('item-amount');
-
-	const itemPrice = document.createElement('td');
-	itemPrice.textContent = price;
-	itemPrice.classList.add('item-price');
-
-	const rowPrice = total ? `<strong>${total}</strong>` : +price * +amount
-
-	const totalItemPrice = document.createElement('td');
-	totalItemPrice.classList.add('item-total');
-	totalItemPrice.innerHTML = rowPrice;
-	itemDetails.append(itemNumber, itemName, itemAmount, itemPrice, totalItemPrice);
-
-	return [itemDetails, +rowPrice]
-}
 
 // Descargar presupuesto como PDF
 function downloadBudget (event) {

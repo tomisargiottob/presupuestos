@@ -71,7 +71,7 @@ table thead tr {
 }
 table th,
 table td {
-    padding: 12px 15px;
+    padding: 10px 10px;
 }
 td input {
 	background-color: transparent;
@@ -158,6 +158,15 @@ table tbody tr.active-row {
 	border: 1px solid #ebeef5;
 	color: #ff1b1b;
 }
+.action-button{
+	cursor: pointer;
+	padding: 4px 4px 0px;
+	margin-left: 10px;
+	border-radius: 5px;
+	border: 0.1px solid #409eff;
+	background-color: #409eff;
+}
+
 
 @keyframes fadeOut{
 	from{

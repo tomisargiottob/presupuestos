@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="./utils/purify.min.js"></script>
 	<script type="text/javascript" src="./utils/html2canvas.min.js"></script>
 	<script type="text/javascript" src="./js/database.js"></script>
+	<script type="text/javascript" src="./js/utils.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -28,44 +29,47 @@
 		</div>
 	</div>
 	<h1 class="main-title">Historial de presupuestos</h1>
-	<div class="budgets-list">
-		<table id="budget-table">
-			<thead>
-				<th class="budget-date">Fecha</th>
-				<th class="budget-school">Colegio</th>
-				<th class="budget-items">Cantidad</th>
-				<th class="budget-total">Total</th>
-				<th class="budget-actions">Acciones</th>
-			</thead>
-			<tbody id="budget-details">
+	<div class="history-preview">
+		<div class="budgets-list column">
+			<table id="budget-table">
+				<thead>
+					<th class="budget-date">Fecha</th>
+					<th class="budget-school">Colegio</th>
+					<!-- <th class="budget-amount">Alumnos</th> -->
+					<th class="budget-contact">Contacto</th>
+					<th class="budget-total">Total</th>
+					<th class="budget-actions">Acciones</th>
+				</thead>
+				<tbody id="budget-list">
+		
+				</tbody>
+			</table>
+		</div>
+		<div id="budget-section" class="column hidden">
+			<p class="section-name">Datos de la Promoción:</p>
+			<ul id="school-data">
+			</ul>
+			<hr>
+			<p class="section-name">Detalles del pedido:</p>
+			<table id="budget-table">
+				<thead>
+					<th class="item-number">Numero</th>
+					<th class="item-name">Item</th>
+					<th class="item-amount">Cantidad</th>
+					<th class="item-price">Precio</th>
+					<th class="item-total">Total</th>
+				</thead>
+				<tbody id="budget-details">
 	
-			</tbody>
-		</table>
-	</div>
-	<div id="budget-section" class="hidden">
-		<p class="section-name">Datos de la Promoción:</p>
-		<ul id="school-data">
-		</ul>
-		<hr>
-		<p class="section-name">Detalles del pedido:</p>
-		<table id="budget-table">
-			<thead>
-				<th class="item-number">Numero</th>
-				<th class="item-name">Item</th>
-				<th class="item-amount">Cantidad</th>
-				<th class="item-price">Precio</th>
-				<th class="item-total">Total</th>
-			</thead>
-			<tbody id="budget-details">
-
-			</tbody>
-		</table>
-		<hr>
-		<p class="section-name">Precio:</p>
-		<p id="discount-percentage" class="summary"></p>
-		<p id="discount-amount" class="summary"></p>
-		<p id="final-price" class="summary"></p>
-		<hr>
+				</tbody>
+			</table>
+			<hr>
+			<p class="section-name">Precio:</p>
+			<p id="discount-percentage" class="summary"></p>
+			<p id="discount-amount" class="summary"></p>
+			<p id="final-price" class="summary"></p>
+			<hr>
+		</div>
 	</div>
 	<script src="./js/history.js"></script>
 </body>

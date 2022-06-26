@@ -7,6 +7,13 @@ const baseSelect = [{ name: 'Seleccionar', price: 0 }];
 class Database{
 	constructor() {
 		this.firebaseConfig = {
+			apiKey: "AIzaSyBUs4aXgHT9tS8hG6ZI4Bw1rcnBUXTnREw",
+			authDomain: "presupuestos-7f9ea.firebaseapp.com",
+			projectId: "presupuestos-7f9ea",
+			storageBucket: "presupuestos-7f9ea.appspot.com",
+			messagingSenderId: "1049530096115",
+			appId: "1:1049530096115:web:e053ff3cc49d99d3985a86",
+			measurementId: "G-ZV44FY9BPV"
 		};
 	}
 

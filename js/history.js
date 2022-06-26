@@ -5,7 +5,6 @@ async function populateHistoryTable() {
 	const database = new Database();
 	await database.connect();
 	const budgets = await database.loadBudgets(true);
-	console.log(budgets);
 	addBudgets(budgets);
 }
 
@@ -26,34 +25,63 @@ function downloadBudget (event) {
 }
 
 function createTemplate(budget) {
+	const schoolData = document.getElementById('school-data');
+	schoolData.innerHTML = "";
+	Object.keys(budget).forEach((data) => {
+		if(translation[data]) {
+			const info = document.createElement('li');
+			info.innerText = `${translation[data]}: ${budget[data]}`;
+			schoolData.append(info)
+		}
+	});
 	const budgetDetails = document.getElementById('budget-details');
+	budgetDetails.innerHTML='';
+	for (let i=0; i < budget.items.length ; i++) {
+		let itemTotal = 0;
+		const article = budget.items[i]
+		const [tableData, price] = addTableData(i+1, article.name, article.amount, article.price);
+		itemTotal += price
+		budgetDetails.append(tableData);
+		for (let j=0; j < article.additionals.length ; j++) {
+			const additional = article.additionals[j];
+			const [additionalData, additionalPrice] = addTableData(`${i+1}.${j+1}`, additional.name, additional.amount, additional.price);
+			budgetDetails.append(additionalData);
+			itemTotal += additionalPrice
+		}
+		const [itemAcumulated] = addTableData('','','','',itemTotal);
+		budgetDetails.append(itemAcumulated);
+	}
+	const finalPrice = document.getElementById('final-price');
+	finalPrice.innerHTML= `<strong>Total: ${budget.total}$</strong>`;
 	return;
 }
 
+function createTableData(value) {
+	const tableData = document.createElement('td');
+	tableData.innerHTML = value;
+	return tableData
+}
+
 function addBudgets(budgets) {
-	const budgetTable = document.getElementById('budget-details');
+	const budgetTable = document.getElementById('budget-list');
 	for(const budget of budgets) {
 		const budgetDetails = document.createElement('tr');
-		const budgetDate = document.createElement('td');
-		budgetDate.innerText = budget.date;
-		const budgetSchool = document.createElement('td');
-		budgetSchool.innerText = budget.school;
-		const budgetContact = document.createElement('td');
-		budgetContact.innerText = budget.contactEmail;
-		const budgetTotal = document.createElement('td');
-		budgetTotal.innerText = budget.total; 
+		const budgetDate = createTableData(budget.date);
+		const budgetSchool = createTableData(budget.school);
+		// const budgetStudents = createTableData(budget.students);
+		const budgetContact = createTableData(budget.contactEmail);
+		const budgetTotal = createTableData(budget.total);
 		const budgetActions = document.createElement('td');
 		const downloadButton = document.createElement('button');
-		downloadButton.classList.add('add-icon');
+		downloadButton.classList.add('action-button');
 		downloadButton.innerHTML= "<div><i class='fa-solid fa-download'></i></div>";
 		downloadButton.addEventListener('click', (event) => {
 			createTemplate(budget);
 			downloadBudget(event);
 		})
-		const showDetails = document.createElement('button');
-		showDetails.classList.add('add-icon');
-		showDetails.innerHTML= "<div><i class='fa-solid fa-eye'></i></div>";
-		budgetActions.append(downloadButton, showDetails);
+		const section = document.getElementById('budget-section');
+		const [showButton, hideButton] = createShowHideButtons(section, () => { createTemplate(budget) });
+		budgetActions.append(downloadButton, showButton, hideButton);
 		budgetDetails.append(budgetDate, budgetSchool, budgetContact, budgetTotal, budgetActions);
 		budgetTable.append(budgetDetails);
 	}

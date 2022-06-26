@@ -1,14 +1,5 @@
-.add-icon{
-	cursor: pointer;
-	padding: 4px 4px 0px;
-	margin-left: 10px;
-	border-radius: 5px;
-	border: 0.1px solid #409eff;
-	background-color: #409eff;
-}
-
 .budgets-list{
-	width: 40%;
+	/* width: 50%; */
 	margin: 0 auto;
 }
 
@@ -16,14 +7,44 @@
 	min-width: 80px;
 }
 .budget-school{
-	min-width: 80px;
+	min-width: 180px;
 }
 .budget-amount{
-	min-width: 80px;
+	min-width: 20px;
+}
+.budget-contact{
+	min-width: 120px;
 }
 .budget-total{
-	min-width: 80px;
+	min-width: 60px;
 }
 .budget-actions{
-	min-width: 80px;
+	min-width: 20px;
+}
+
+.history-preview{
+	display: flex;
+}
+.column{
+	width: 50%;
+	padding: 30px;
+}
+
+#school-data li{
+	margin-bottom: 5px;
+}
+#budget-table{
+	width: 100%;
+	margin: 0px;
+}
+.budget-section :is(table, th, td){
+	border: 1px solid black;
+  	border-collapse: collapse;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+#summary{
+	text-align: right;
+	margin-bottom: 5px;
+	margin-top: 10px;
 }
