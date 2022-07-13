@@ -71,7 +71,7 @@ class Database{
 			showAlert('Could not connect to database please try again later','error');
 			return;
 		}
-		if(!budget.date || budget.school || budget.total) {
+		if(!budget.date || !budget.school || !budget.total) {
 			showAlert('No date, school or total price indicated for budget, please try again','error');
 			return;
 		}

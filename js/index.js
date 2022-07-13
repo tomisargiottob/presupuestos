@@ -148,7 +148,7 @@ function createPreview(event) {
 	schoolData.innerHTML=''; //elimino lo anterior si se vuelve a crear
 	budgetGenerated = {items: []};
 	
-	for (var pair of formData.entries()) {
+	for (const pair of formData.entries()) {
 		if (pair[1]){
 			const budgetData = document.createElement('li');
 			budgetData.innerText = `${translation[pair[0]]} : ${pair[1]}`;
@@ -200,7 +200,7 @@ function downloadBudget (event) {
 
 	const doc = new jsPDF('p', 'pt', 'a4');
 	const section = document.getElementById('budget-section');
-	var getContent = "<div style='font-size:11px; padding: 05px 25px; width:540px;'><div style=' padding: 05px 25px; width:300px; margin= 0 auto;'><img style='width:100%;' src='./assets/logoMashipa.png' alt='Logo'></div>"+section.innerHTML+"</div>";
+	const getContent = "<div style='font-size:11px; padding: 05px 25px; width:540px;'><div style=' padding: 05px 25px; width:300px; margin= 0 auto;'><img style='width:100%;' src='./assets/logoMashipa.png' alt='Logo'></div>"+section.innerHTML+"</div>";
 
 	doc.setFont("helvetica");
 	doc.setFontSize(1);
