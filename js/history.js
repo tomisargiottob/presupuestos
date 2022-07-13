@@ -1,5 +1,6 @@
 window.jsPDF = window.jspdf.jsPDF;
 window.html2canvas = html2canvas;
+const historyTable = document.getElementById('budgets');
 
 async function populateHistoryTable() {
 	const database = new Database();
@@ -25,6 +26,7 @@ function downloadBudget (event) {
 }
 
 function createTemplate(budget) {
+	historyTable.classList.add('column-item');
 	const schoolData = document.getElementById('school-data');
 	schoolData.innerHTML = "";
 	Object.keys(budget).forEach((data) => {
@@ -80,7 +82,7 @@ function addBudgets(budgets) {
 			downloadBudget(event);
 		})
 		const section = document.getElementById('budget-section');
-		const [showButton, hideButton] = createShowHideButtons(section, () => { createTemplate(budget) });
+		const [showButton, hideButton] = createShowHideButtons(section, () => createTemplate(budget), () => historyTable.classList.remove('column-item') );
 		budgetActions.append(downloadButton, showButton, hideButton);
 		budgetDetails.append(budgetDate, budgetSchool, budgetContact, budgetTotal, budgetActions);
 		budgetTable.append(budgetDetails);

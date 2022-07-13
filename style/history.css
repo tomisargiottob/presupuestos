@@ -1,32 +1,30 @@
 .budgets-list{
-	/* width: 50%; */
+	padding: 0px 40px;
 	margin: 0 auto;
 }
 
 .budget-date{
+	width: 15%;
 	min-width: 80px;
 }
 .budget-school{
+	width: 25%;
 	min-width: 180px;
 }
-.budget-amount{
-	min-width: 20px;
-}
 .budget-contact{
+	width: 25%;
 	min-width: 120px;
 }
 .budget-total{
+	width: 20%;
 	min-width: 60px;
 }
 .budget-actions{
+	width: 15%;
 	min-width: 20px;
 }
 
-.history-preview{
-	display: flex;
-}
-.column{
-	width: 50%;
+.column-item{
 	padding: 30px;
 }
 
@@ -48,3 +46,37 @@
 	margin-bottom: 5px;
 	margin-top: 10px;
 }
+
+@media screen and (max-width: 1500px)  {  
+	table th:nth-child(4) {
+		display: none;
+	}
+	table td:nth-child(4) {
+		display: none;
+	}
+} 
+@media screen and (max-width: 1200px)  {  
+	table th:nth-child(4) {
+		display: block;
+	}
+	table td:nth-child(4) {
+		display: block;
+	}
+} 
+
+@media screen and (max-width: 1000px)  {  
+	table th:nth-child(4) {
+		display: none;
+	}
+	table td:nth-child(4) {
+		display: none;
+	}
+} 
+@media screen and (max-width: 600px)  {  
+	table th:nth-child(3) {
+		display: none;
+	}
+	table td:nth-child(3) {
+		display: none;
+	}
+} 

@@ -27,7 +27,7 @@ function addTableData(number, name, amount, price, total) {
 	return [itemDetails, +rowPrice]
 }
 
-function createShowHideButtons(element, callback) {
+function createShowHideButtons(element, callback, undoCallback) {
 	const showButton = document.createElement('button');
 	showButton.innerHTML= "<div class='add-icon'><i class='fa-solid fa-eye'></i></div>";
 	showButton.className='action-button';
@@ -48,6 +48,9 @@ function createShowHideButtons(element, callback) {
 	})
 	hideButton.addEventListener('click', (event) => {
 		event.preventDefault();
+		if(undoCallback){
+			undoCallback();
+		}
 		hideButton.classList.add('hidden');
 		showButton.classList.remove('hidden');
 		element.classList.add('hidden');
